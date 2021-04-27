@@ -1,0 +1,10 @@
+Problem
+A small airline company (Virgin Airline) needs a program to carry out seat reservation for its flights. You are to write a demonstration seat reservation program for this company.
+Description of Class and its functionality
+The program is to be menu driven with the following options:
+	1 Display available flights
+	2 View flight
+	3 Seat availability
+	4 Seat booking
+	5 Exit
+
