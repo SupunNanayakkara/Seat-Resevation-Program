@@ -50,6 +50,20 @@ class flight
 		~flight(){};//destructor;
 };
 
+string flight::getFlight_no()
+{
+	return flight_no;
+}
+int flight::getESeatCount()
+{
+	return e_seat_count;
+}
+
+int flight::getBSeatCount()
+{
+	return b_seat_count;
+}
+
 //set text file data to the vector
 void flight::set_flight_info()
 {
