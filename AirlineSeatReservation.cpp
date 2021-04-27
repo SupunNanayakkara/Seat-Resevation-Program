@@ -6,8 +6,6 @@
 
 using namespace std;
 
-vector<flight> flight_vector; //create vector
-
 //seat structure with row_no, seat_class and seats
 struct seat
 {
@@ -49,6 +47,8 @@ class flight
 		
 		~flight(){};//destructor;
 };
+
+vector<flight> flight_vector; //create vector
 
 string flight::getFlight_no()
 {
@@ -174,12 +174,32 @@ void flight::view_flight()
 	cout<<"----------------------------------------------------------------------"<<endl;
 	cout<<"|Row Number 	Seat Class 	Available Seats			     |"<<endl;
 	
-	
+	while(a<raw_count) //traverse all available rows of a flight
+	{
+		if(avail_seat[a].seat_no[0]!='0') //if at least one seat is available in the row
+		{
+			cout<<"|";
+			cout<<avail_seat[a].raw_no<<"	     	 ";
+			cout<<avail_seat[a].seat_class<<"         	 ";
+			b=0;
+			while(avail_seat[a].seat_no[b]!='0') //traverse all the available seats of a considered row
+			{
+				cout<<avail_seat[a].seat_no[b];
+				b++;
+			}
+			cout<<"				     |";
+			cout<<endl;
+		}
+		a++;
+	}
 }
 
 int main()
 {
 	int op,i;
+	flight obj;
+	
+	obj.set_flight_info();
 	
 	cout<<"\t---------------Welcome to Virgin Airlines-----------------"<<endl<<endl<<endl;
 	
