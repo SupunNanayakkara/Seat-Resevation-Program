@@ -149,7 +149,7 @@ void flight::set_flight_info()
 
 int main()
 {
-	int op;
+	int op,i;
 	
 	cout<<"\t---------------Welcome to Virgin Airlines-----------------"<<endl<<endl<<endl;
 	
@@ -168,6 +168,21 @@ int main()
 		cout<<"Enter Your Option: ";
 		cin>>op;
 		
-			
+		switch(op)
+		{
+			case 1:
+				cout<<endl;
+				cout<<"		 Available Flights Details"<<endl;
+				cout<<"		--------------------------"<<endl<<endl;
+				for(i=0;i<flight_vector.size();i++)
+				{
+					flight_vector[i].view_flight();
+					cout<<"----------------------------------------------------------------------"<<endl;
+					cout<<endl<<endl;
+				}
+				break;
+			default:
+				cout<<"Invalid Input";
+		}	
 	}
 }
