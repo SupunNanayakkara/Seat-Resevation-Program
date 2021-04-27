@@ -8,3 +8,14 @@ The program is to be menu driven with the following options:
 	4 Seat booking
 	5 Exit
 
+Data Structures
+You are to use an object-oriented approach to this problem. There should be a flight class where all flights being contained in an array of records (structs) in the flight class. Within each flight there should be an array of char representing the seats.
+A file of data called flights.txt will be provided which your program must read in to begin. The data will be the flight numbers, departure dates/times, airports and seating. Your program will be tested on a similar file of data. DO NOT create your own file of a different format. Use the format supplied in this file.
+
+The format of the file will be:
+XXXXX			// Flight number e.g. VA502
+XX/XX/XXXX XX:XX	// Date and time
+XXXXXXXXXXXX		// 20 char for departure airport
+XXXXXXXXXXXX		// 20 char for arrival airport
+XXXXXXXXX		// Row number, class, seats A..F if available
+blank line separates flights
