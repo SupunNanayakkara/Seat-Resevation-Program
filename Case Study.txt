@@ -19,3 +19,6 @@ XXXXXXXXXXXX		// 20 char for departure airport
 XXXXXXXXXXXX		// 20 char for arrival airport
 XXXXXXXXX		// Row number, class, seats A..F if available
 blank line separates flights
+
+Option One (1)
+The program should list all flight numbers that have at least one seat available. The screen display should show the flight number, departure date and time, departure airport code, arrival airport code and the number of seats available with their class.
