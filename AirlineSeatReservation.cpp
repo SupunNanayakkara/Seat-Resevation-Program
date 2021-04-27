@@ -7,6 +7,14 @@
 using namespace std;
 
 
+//seat structure with row_no, seat_class and seats
+struct seat
+{
+	int raw_no;
+	char seat_class;
+	char seat_no[6]={'0','0','0','0','0','0'};	
+};
+
 //flight class
 class flight
 {
@@ -50,7 +58,90 @@ void flight::set_flight_info()
 		cout<<"File Not Existing."; 
 	else
 	{
-		cout<<"File Exist";
+		int i,j,flag,count,row,esc=0,bsc=0;
+		string data,row1,row2,srow;
+		char seats[12];
+		while(data_file.eof()==0)
+		{
+			flight obj;
+			flag = 0;
+			getline(data_file,data);
+			obj.flight_no = data;
+			getline(data_file,data);
+			obj.departure_date_time = data;
+			getline(data_file,data);
+			obj.dep_airport = data;
+			getline(data_file,data);
+			obj.arr_airport = data;
+			i=0;
+			esc=0;bsc=0;
+			while(flag!=1)
+			{
+				data_file.getline(seats,12); //get row details to char array
+				if(seats[0]=='\0') //if 1st element of a seats array(line of the file) is null, then it is empty line
+				{
+					flag = 1;	
+				}
+				else
+				{
+					count = 0;
+					j=0;
+					while(count!=3)
+					{
+						if(count==0)
+						{
+							row1 = seats[0]; 
+							row2 = seats[1];
+							j++;
+							if(seats[j]!=' ')
+							{
+								srow = row1 + row2;
+								j=j+2;
+							}
+							else
+							{
+								srow = row1;
+								j=j+1;
+							}
+							stringstream(srow)>>row; //convert string row_no to integer row_no
+							obj.avail_seat[i].raw_no = row; //row_no
+							count = 1; //identify row_no 	
+						}
+						else if(count==1)
+						{
+							obj.avail_seat[i].seat_class = seats[j]; //seat_class
+							j=j+2;
+							count = 2; //identify seats class
+						}
+						else
+						{
+							int k=0;
+							while(seats[j]!='\0')
+							{
+								obj.avail_seat[i].seat_no[k] = seats[j]; //seats
+								j++;
+								k++;
+							}
+							if(obj.avail_seat[i].seat_class=='E')
+							{
+								esc = esc + k; //total no of economy class seats in a flight
+								obj.e_seat_count = esc;
+							}
+							else
+							{
+								bsc = bsc + k; //total no of business class seats in a flight
+								obj.b_seat_count = bsc;								
+							}
+							
+							count = 3; //complete traversing (identify the availablle seats of the row) 
+							i++;
+						}						
+					}
+				}
+				obj.raw_count = i;					
+			}
+			flight_vector.push_back(obj); //enter the object to the vector	
+		}
 	}
 	data_file.close();  
 }
@@ -58,9 +149,6 @@ void flight::set_flight_info()
 int main()
 {
 	int op;
-	flight obj;
-	
-	obj.set_flight_info();
 	
 	cout<<"\t---------------Welcome to Virgin Airlines-----------------"<<endl<<endl<<endl;
 	
@@ -77,8 +165,6 @@ int main()
 		cout<<"\t----------------------------------------"<<endl;
 		
 		cout<<"Enter Your Option: ";
-		cin>>op;
-		
-		
+		cin>>op;	
 	}
 }
