@@ -41,9 +41,26 @@ class flight
 		~flight(){};//destructor;
 };
 
+//set text file data to the vector
+void flight::set_flight_info()
+{
+	fstream data_file; //for flights.txt file
+	data_file.open("flights.txt",ios::in); //open file to read   
+	if(!data_file) 
+		cout<<"File Not Existing."; 
+	else
+	{
+		cout<<"File Exist";
+	}
+	data_file.close();  
+}
+
 int main()
 {
 	int op;
+	flight obj;
+	
+	obj.set_flight_info();
 	
 	cout<<"\t---------------Welcome to Virgin Airlines-----------------"<<endl<<endl<<endl;
 	
