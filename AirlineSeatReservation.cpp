@@ -6,6 +6,7 @@
 
 using namespace std;
 
+vector<flight> flight_vector; //create vector
 
 //seat structure with row_no, seat_class and seats
 struct seat
@@ -165,6 +166,8 @@ int main()
 		cout<<"\t----------------------------------------"<<endl;
 		
 		cout<<"Enter Your Option: ";
-		cin>>op;	
+		cin>>op;
+		
+			
 	}
 }
