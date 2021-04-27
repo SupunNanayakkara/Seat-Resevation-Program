@@ -147,6 +147,22 @@ void flight::set_flight_info()
 	data_file.close();  
 }
 
+//display flight information
+void flight::view_flight()
+{
+	int a=0,b;
+	cout<<"Flight Number                              : "<<flight_no<<endl;
+	cout<<"Departure Date & Time                      : "<<departure_date_time<<endl;
+	cout<<"Deraprture Airport                         : "<<dep_airport<<endl;
+	cout<<"Arrival Airport                            : "<<arr_airport<<endl;
+	cout<<"Number of Seats Available in Economy Class : "<<e_seat_count<<endl;
+	cout<<"Number of Seats Available in Business Class: "<<b_seat_count<<endl;
+	cout<<"----------------------------------------------------------------------"<<endl;
+	cout<<"|Row Number 	Seat Class 	Available Seats			     |"<<endl;
+	
+	
+}
+
 int main()
 {
 	int op,i;
