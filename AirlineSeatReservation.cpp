@@ -64,6 +64,48 @@ int flight::getBSeatCount()
 	return b_seat_count;
 }
 
+void flight::view_E_seats()
+{
+	int a=0,b;
+	cout<<"Row Number	Available Seats"<<endl;
+	while(a<raw_count)
+	{
+		if(avail_seat[a].seat_class =='E')
+		{
+			cout<<avail_seat[a].raw_no<<" 		 ";
+			b=0;
+			while(avail_seat[a].seat_no[b]!='0')
+			{
+				cout<<avail_seat[a].seat_no[b];
+				b++;
+			}
+			cout<<endl;
+		}
+		a++;
+	}
+}
+
+void flight::view_B_seats()
+{
+	int a=0,b;
+	cout<<"Row Number	Available Seats"<<endl;
+	while(a<raw_count)
+	{
+		if(avail_seat[a].seat_class =='B')
+		{
+			cout<<avail_seat[a].raw_no<<" 		 ";
+			b=0;
+			while(avail_seat[a].seat_no[b]!='0')
+			{
+				cout<<avail_seat[a].seat_no[b];
+				b++;
+			}
+			cout<<endl;
+		}
+		a++;
+	}
+}
+
 //set text file data to the vector
 void flight::set_flight_info()
 {
