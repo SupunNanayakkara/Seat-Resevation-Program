@@ -22,3 +22,7 @@ blank line separates flights
 
 Option One (1)
 The program should list all flight numbers that have at least one seat available. The screen display should show the flight number, departure date and time, departure airport code, arrival airport code and the number of seats available with their class.
+
+Option two (2)
+The program should prompt the user for a flight number. The program should then search the database for the requested flight. An appropriate error message should appear if the flight is
+not present. If the flight is found the display should show all available seat numbers together with their class, the total number of available seats in each class, the departure and arrival airports, the departure date and time.
