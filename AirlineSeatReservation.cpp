@@ -273,6 +273,27 @@ int main()
 					cout<<endl<<endl;
 				}
 				break;
+			case 2:
+				cout<<"Enter flight no: ";
+				cin>>f_no;
+				cout<<endl;
+				flag=0;
+
+				for(i=0;i<flight_vector.size();i++)
+				{
+					if(flight_vector.at(i).getFlight_no()==f_no)
+					{
+						flag=1;
+						flight_vector[i].view_flight();
+						cout<<"----------------------------------------------------------------------"<<endl;
+					}
+				}
+				if(flag==0)
+				{
+					cout<<"Invalid Flight Number."<<endl;
+				}
+				cout<<endl<<endl;;
+				break;
 			default:
 				cout<<"Invalid Input";
 		}	
