@@ -252,10 +252,6 @@ void flight::seatAvailability(int c)
 			if(getESeatCount()>=no_of_seats)
 			{
 				view_E_seats();
-				if(c==4)
-				{
-					seatBooking(s_class,no_of_seats);
-				}
 			}
 			else
 			{
@@ -268,10 +264,6 @@ void flight::seatAvailability(int c)
 			if(getBSeatCount()>=no_of_seats)
 			{
 				view_B_seats();
-				if(c==4)
-				{
-					seatBooking(s_class,no_of_seats);
-				}
 			}
 			else
 			{
@@ -289,7 +281,9 @@ void flight::seatAvailability(int c)
 
 int main()
 {
-	int op,i;
+	int op,i,c,flag,no_of_seats;
+	char s_class;
+	string f_no;
 	flight obj;
 	
 	obj.set_flight_info();
@@ -344,6 +338,24 @@ int main()
 					cout<<"Invalid Flight Number."<<endl;
 				}
 				cout<<endl<<endl;;
+				break;
+			case 3:
+				cout<<"Enter flight no: ";
+				cin>>f_no;
+				flag=0;
+				for(i=0;i<flight_vector.size();i++)
+				{
+					if(flight_vector.at(i).getFlight_no()==f_no)
+					{
+						flag=1;
+						flight_vector[i].seatAvailability(3);
+					}
+				}
+				if(flag==0)
+				{
+					cout<<"Invalid Flight Number."<<endl;
+				}
+				cout<<endl<<endl;
 				break;
 			default:
 				cout<<"Invalid Input";
