@@ -236,6 +236,57 @@ void flight::view_flight()
 	}
 }
 
+//check availability of the seats according to the user input flight_no, no_of_seats and the seat class
+void flight::seatAvailability(int c)
+{
+	char s_class;
+	int no_of_seats;
+	cout<<"Enter Class Type(Business-B or Economy-E): ";
+	cin>>s_class;
+	if(s_class=='E' || s_class=='B')
+	{
+		cout<<"Enter the number of seats reqired: ";
+		cin>>no_of_seats;
+		if(s_class=='E')
+		{
+			if(getESeatCount()>=no_of_seats)
+			{
+				view_E_seats();
+				if(c==4)
+				{
+					seatBooking(s_class,no_of_seats);
+				}
+			}
+			else
+			{
+				cout<<"No Sufficient Economy Class Seats in this Flight."<<endl;
+				cout<<"Number of Seats Available in Economy Class: "<<getESeatCount()<<endl;
+			}
+		}
+		if(s_class=='B')
+		{
+			if(getBSeatCount()>=no_of_seats)
+			{
+				view_B_seats();
+				if(c==4)
+				{
+					seatBooking(s_class,no_of_seats);
+				}
+			}
+			else
+			{
+				cout<<"No Sufficient Business Class Seats in this Flight."<<endl;
+				cout<<"Number of Seats Available in Business Class: "<<getBSeatCount()<<endl;
+			}
+		}
+		
+	}
+	else
+	{
+		cout<<"Invalid Input"<<endl;
+	}
+}
+
 int main()
 {
 	int op,i;
