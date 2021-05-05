@@ -28,3 +28,6 @@ The program should prompt the user for a flight number. The program should then 
 
 Option three (3)
 The program should prompt the user for a flight number. It should then request the number of seats required by the customer. The program will then need to search the flight to see if that number of seats is available. If they are then a message giving the seat numbers available should appear on screen. If not an appropriate error message should be given.
+
+Option four (4)
+The program should prompt for a flight number and seat location in order to make a booking. Seats are numbered by rows 1..60 and A..F in each row. If the seat is available it should be allocated and therefore should not show as available any more. If a non-available seat is requested an error message should appear.
