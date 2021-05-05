@@ -252,6 +252,7 @@ void flight::seatAvailability(int c)
 			if(getESeatCount()>=no_of_seats)
 			{
 				view_E_seats();
+				
 			}
 			else
 			{
@@ -277,6 +278,53 @@ void flight::seatAvailability(int c)
 	{
 		cout<<"Invalid Input"<<endl;
 	}
+}
+
+void flight::seatBooking(char s_class,int req_seats)
+{
+	int a,b,c,row,flag=0,se;
+	char seat_no;
+	for(int i=0;i<req_seats;i++)
+	{
+		se=0;
+		cout<<"Enter Seat Location (Format: Row_No(1-60) Seat_No(A-F)) :";
+		cin>>row>>seat_no;
+		a=0;
+		while(a<raw_count) //traverse all available rows of a flight to serach the entered row_no
+		{
+			if(avail_seat[a].raw_no == row && avail_seat[a].seat_class == s_class) //if entered row_no available and entered class is matched
+			{
+				flag=1;
+				b=0;
+				while(avail_seat[a].seat_no[b]!='0') //if at least one seat is available in the row
+				{
+					if(avail_seat[a].seat_no[b]==seat_no) //if entered seat_no is available
+					{
+						se=1;
+						c=b;
+						while(avail_seat[a].seat_no[c]!='0') //while traverse all the seats of a row
+						{
+							avail_seat[a].seat_no[c]=avail_seat[a].seat_no[c+1]; //rearrange the seat_no of the array after seat booking
+							c++;
+						}	
+					}
+					b++;	
+				}
+				if(se==0) //if entered seat_no is not available
+				{
+					cout<<"Entered Seat is not Available."<<endl;
+					i--;
+				}	
+			}
+			a++;	
+		}
+		if(flag==0) //if entered row_no is not available or entered class is not matched
+		{
+			cout<<"Entered Seat is not Available."<<endl;
+			i--;	
+		}	
+	}
+	cout<<req_seats<<" seat(s) are successfully booked."<<endl<<endl;	
 }
 
 int main()
