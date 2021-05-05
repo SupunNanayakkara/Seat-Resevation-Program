@@ -268,6 +268,10 @@ void flight::seatAvailability(int c)
 			if(getBSeatCount()>=no_of_seats)
 			{
 				view_B_seats();
+				if(c==4)
+				{
+					seatBooking(s_class,no_of_seats);
+				}
 			}
 			else
 			{
